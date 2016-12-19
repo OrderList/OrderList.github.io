@@ -20,6 +20,7 @@
              padding          : 5px;
          }
          .order{
+             margin-top       : 2px;
              border-radius    : 10px;
              background-color : white;
              color            : lightgrey;
@@ -59,9 +60,10 @@
                                for(var j = 0; j < parsedData[i]["tags"].length; j++){
                                    el.innerHTML += '<span class="tag">' + parsedData[i]["tags"][j] + "</span>";
                                }
-                               el.innerHTML += '<span class="special tag">';
-                               el.innerHTML += (parsedData[i]["assigned"])?parsedData[i]["assigned"]:"NOT ASSIGNED";
-                               el.innerHTML += "</span>";
+                               tg += '<span class="special tag">';
+                               tg += (parsedData[i]["assigned"])?parsedData[i]["assigned"]:"NOT ASSIGNED";
+                               tg += "</span>";
+                               el.innerHTML += tg;
                                document.body.appendChild(el);
                            }
                        } else {
