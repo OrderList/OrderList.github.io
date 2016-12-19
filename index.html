@@ -1,0 +1,76 @@
+<html>
+  <head>
+     <title>Order List</title>
+     <style>
+         *{
+             font-family: Impact, Helvetica;
+         }
+         .loading{
+             border-radius    : 10px;
+             background-color : #ffffaa;
+             color            : orange;
+             border           : solid orange;
+             padding          : 5px;
+         }
+         .error{
+             border-radius    : 10px;
+             background-color : pink;
+             color            : red;
+             border           : solid red;
+             padding          : 5px;
+         }
+         .order{
+             border-radius    : 10px;
+             background-color : white;
+             color            : lightgrey;
+             border           : dotted lightgrey;
+             padding          : 10px;
+         }
+         .tag{
+             border-radius    : 7px;
+             background-color : lightgreen;
+             color            : green;
+             border           : solid green;
+             padding-left     : 1px;
+             padding-right    : 1px;
+             margin           : 2px;
+         }
+         .special{
+             background-color : lightblue;
+             color            : blue;
+             border           : dotted blue;
+         }
+     </style>
+  </head>
+  <body>
+       <div class="loading">Order List Loading...</div>
+       <script>
+           function loadOrders(url, errmsg){
+               xmlhttp = new XMLHttpRequest();
+               xmlhttp.open("GET", url, false);
+               xmlhttp.onreadystatechange = function(){
+                   if(xmlhttp.readyState == 4){
+                       if(xmlhttp.status == 200){
+                           parsedData = JSON.parse(xmlhttp.responseText)
+                           for(var i = 0; i < parsedData.length; i++){
+                               el = document.createElemet("DIV");
+                               el.className = "order";
+                               el.innerHTML = parsedData[i]["name"] + " <i>ordered by " + parsedData[i]["by"] + "</i>";
+                               for(var j = 0; j < parsedData[i]["tags"].length; j++){
+                                   el.innerHTML += '<span class="tag">' + parsedData[i]["tags"][j] + "</span>";
+                               }
+                               el.innerHTML += '<span class="special tag">';
+                               el.innerHTML += (parsedData[i]["assigned"])?parsedData[i]["assigned"]:"NOT ASSIGNED";
+                               el.innerHTML += "</span>";
+                           }
+                       } else {
+                           document.getElementsByClassName("loading")[0].innerHTML = errmsg;
+                           document.getElementsByClassName("loading")[0].className = "error";
+                       }
+                   }
+               }
+           }
+           loadOrders("./orders.json", "Uh oh! An error occured. *cries*. Try reloading the page.");
+       </script>
+  </body>
+</html>
