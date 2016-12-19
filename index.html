@@ -65,7 +65,9 @@
                                tg += "</span>";
                                el.innerHTML += tg;
                                document.body.appendChild(el);
-                               document.body.removeChild(document.getElementsByClassName("loading")[0]);
+                               try{
+                                 document.body.removeChild(document.getElementsByClassName("loading")[0]);
+                               } catch(e){}
                            }
                        } else {
                            document.getElementsByClassName("loading")[0].innerHTML = errmsg;
@@ -75,7 +77,10 @@
                }
                xmlhttp.send();
            }
-           loadOrders("./orders.json", "Uh oh! An error occured. *cries*. Try reloading the page.");
+           loadOrders("./orders.json?rand=" + Math.random(), "Uh oh! An error occured. *cries*. Try reloading the page.");
+           setInterval(function(){
+               loadOrders("./orders.json?rand=" + Math.random(), "Uh oh! An error occured. *cries*. Try reloading the page.");
+           }, 20000);
        </script>
   </body>
 </html>
