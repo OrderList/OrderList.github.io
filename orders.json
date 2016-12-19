@@ -1,11 +1,11 @@
 [
  {
-  "name"     : "Test Order",
-  "desc"     : "This is a test order",
+  "name"     : "Finsih order list",
+  "desc"     : "We need to finish the order list.",
   "time"     : 1482154754000,
   "due"      : 1482624000000,
-  "tags"     : ["art", "music", "animation"],
-  "by"       : "jokebookservice1",
-  "assigned" : "Everybody"
+  "tags"     : ["meta", "orders", "organisation"],
+  "by"       : "jokebookservice1 and others",
+  "assigned" : "All Staff"
  }
 ]
