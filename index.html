@@ -47,7 +47,7 @@
        <script>
            function loadOrders(url, errmsg){
                xmlhttp = new XMLHttpRequest();
-               xmlhttp.open("GET", url, false);
+               xmlhttp.open("GET", url, true);
                xmlhttp.onreadystatechange = function(){
                    if(xmlhttp.readyState == 4){
                        if(xmlhttp.status == 200){
