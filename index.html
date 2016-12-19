@@ -57,7 +57,7 @@
                            parsedData = JSON.parse(xmlhttp.responseText);
                            for(var i = 0; i < parsedData.length; i++){
                                el = document.createElement("DIV");
-                               e.addEventListener("click", function(){
+                               el.addEventListener("click", function(){
                                 alert(parsedData[i]["desc"] + " /// DUE: " + new Date(parsedData[i]["due"])) 
                                });
                                el.className = "order";
