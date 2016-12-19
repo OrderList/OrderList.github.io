@@ -2,8 +2,8 @@
  {
   "name"     : "Finsih order list",
   "desc"     : "We need to finish the order list.",
-  "time"     : 1482154754000,
-  "due"      : 1482624000000,
+  "time"     : "2016-12-19",
+  "due"      : "2017-01-01",
   "tags"     : ["meta", "orders", "organisation"],
   "by"       : "jokebookservice1 and others",
   "assigned" : "All Staff"
