@@ -53,7 +53,7 @@
                        if(xmlhttp.status == 200){
                            parsedData = JSON.parse(xmlhttp.responseText)
                            for(var i = 0; i < parsedData.length; i++){
-                               el = document.createElemet("DIV");
+                               el = document.createElement("DIV");
                                el.className = "order";
                                el.innerHTML = parsedData[i]["name"] + " <i>ordered by " + parsedData[i]["by"] + "</i>";
                                for(var j = 0; j < parsedData[i]["tags"].length; j++){
@@ -62,6 +62,7 @@
                                el.innerHTML += '<span class="special tag">';
                                el.innerHTML += (parsedData[i]["assigned"])?parsedData[i]["assigned"]:"NOT ASSIGNED";
                                el.innerHTML += "</span>";
+                               document.body.appendChild(el);
                            }
                        } else {
                            document.getElementsByClassName("loading")[0].innerHTML = errmsg;
