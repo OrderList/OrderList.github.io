@@ -44,15 +44,17 @@
      </style>
   </head>
   <body>
+    <div id="body">
+       <div class="loading">Loading - Please wait</div>
+    </div>
        <script>
            function loadOrders(url, errmsg){
-               document.body.innerHTML = "";
                xmlhttp = new XMLHttpRequest();
                xmlhttp.open("GET", url, true);
                xmlhttp.onreadystatechange = function(){
                    if(xmlhttp.readyState == 4){
                        if(xmlhttp.status == 200){
-                           parsedData = JSON.parse(xmlhttp.responseText)
+                           parsedData = JSON.parse(xmlhttp.responseText);
                            for(var i = 0; i < parsedData.length; i++){
                                el = document.createElement("DIV");
                                el.className = "order";
@@ -64,12 +66,11 @@
                                tg += (parsedData[i]["assigned"])?parsedData[i]["assigned"]:"NOT ASSIGNED";
                                tg += "</span>";
                                el.innerHTML += tg;
-                               document.body.appendChild(el);
-                               document.body.removeChild(document.getElementsByClassName("loading")[0]);
+                               document.getElementById("body").innerHTML = "";
+                               document.getElementById("body").appendChild(el);
                            }
                        } else {
-                           document.getElementsByClassName("loading")[0].innerHTML = errmsg;
-                           document.getElementsByClassName("loading")[0].className = "error";
+                           document.getElementById("body").innerHTML += '<div class="error">' + errmsg + "</div>";
                        }
                    }
                }
