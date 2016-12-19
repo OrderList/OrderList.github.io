@@ -60,7 +60,7 @@
                                for(var j = 0; j < parsedData[i]["tags"].length; j++){
                                    el.innerHTML += '<span class="tag">' + parsedData[i]["tags"][j] + "</span>";
                                }
-                               tg += '<span class="special tag">';
+                               var tg = '<span class="special tag">';
                                tg += (parsedData[i]["assigned"])?parsedData[i]["assigned"]:"NOT ASSIGNED";
                                tg += "</span>";
                                el.innerHTML += tg;
