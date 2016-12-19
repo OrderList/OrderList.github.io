@@ -81,8 +81,8 @@
                                  el.addEventListener("click", function(){
                                    document.getElementsByClassName("title")[0].innerHTML = parsedData[i]["name"]; 
                                    document.getElementsByClassName("maintext")[0].innerHTML = parsedData[i]["desc"];
-                                   document.getElementsByClassName("info")[0].innerHTML = `Due Date: ${new Date(parsedData[i]["due"])}
-                                   <br/>Made On: ${new Date(parsedData[i]["time"])}`;
+                                   document.getElementsByClassName("info")[0].innerHTML = `Due Date: ${parsedData[i]["due"]}
+                                   <br/>Made On: ${parsedData[i]["time"]}`;
                                  });
                                })(i);
                                el.className = "order";
