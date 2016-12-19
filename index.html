@@ -57,9 +57,11 @@
                            parsedData = JSON.parse(xmlhttp.responseText);
                            for(var i = 0; i < parsedData.length; i++){
                                el = document.createElement("DIV");
-                               el.addEventListener("click", function(){
-                                alert(parsedData[i]["desc"] + " /// DUE: " + new Date(parsedData[i]["due"])) 
-                               });
+                               (function(i){
+                                 el.addEventListener("click", function(){
+                                   alert(parsedData[i]["desc"] + " /// DUE: " + new Date(parsedData[i]["due"])) 
+                                 });
+                               })(i);
                                el.className = "order";
                                el.innerHTML = "<b>" + parsedData[i]["name"] + "</b> <i>ordered by " + parsedData[i]["by"] + " </i> ";
                                for(var j = 0; j < parsedData[i]["tags"].length; j++){
