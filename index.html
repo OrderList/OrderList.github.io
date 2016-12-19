@@ -44,9 +44,9 @@
      </style>
   </head>
   <body>
-       <div class="loading">Order List Loading...</div>
        <script>
            function loadOrders(url, errmsg){
+               document.body.innerHTML = "";
                xmlhttp = new XMLHttpRequest();
                xmlhttp.open("GET", url, true);
                xmlhttp.onreadystatechange = function(){
@@ -65,9 +65,7 @@
                                tg += "</span>";
                                el.innerHTML += tg;
                                document.body.appendChild(el);
-                               try{
-                                 document.body.removeChild(document.getElementsByClassName("loading")[0]);
-                               } catch(e){}
+                               document.body.removeChild(document.getElementsByClassName("loading")[0]);
                            }
                        } else {
                            document.getElementsByClassName("loading")[0].innerHTML = errmsg;
