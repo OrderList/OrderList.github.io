@@ -75,6 +75,7 @@
                    if(xmlhttp.readyState == 4){
                        if(xmlhttp.status == 200){
                            parsedData = JSON.parse(xmlhttp.responseText);
+                           document.getElementById("body").innerHTML = "";
                            for(var i = 0; i < parsedData.length; i++){
                                el = document.createElement("DIV");
                                (function(i){
@@ -94,7 +95,6 @@
                                tg += (parsedData[i]["assigned"])?parsedData[i]["assigned"]:"NOT ASSIGNED";
                                tg += "</span>";
                                el.innerHTML += tg;
-                               document.getElementById("body").innerHTML = "";
                                document.getElementById("body").appendChild(el);
                            }
                        } else {
